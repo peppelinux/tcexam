@@ -1053,8 +1053,15 @@ function F_createTest($test_id, $user_id) {
 		// ------------------------------
 		$sql = 'SELECT *
 			FROM '.K_TABLE_TEST_SUBJSET.'
-			WHERE tsubset_test_id='.$test_id.'
-			ORDER BY tsubset_type, tsubset_difficulty, tsubset_answers DESC';
+			WHERE tsubset_test_id='.$test_id.'';
+			
+			// this will be commented out to respect the subjects order
+			//ORDER BY tsubset_type, tsubset_difficulty, tsubset_answers DESC';
+		
+		// userfull debug
+		// file_put_contents('/var/www/tcexam_new/tcexam/cache/LOG_DEBUG_1.txt', $sql);
+		
+		
 		if ($r = F_db_query($sql, $db)) {
 			$questions_data = array();
 			while ($m = F_db_fetch_array($r)) {
