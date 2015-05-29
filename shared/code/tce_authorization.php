@@ -124,7 +124,7 @@ if (isset($_POST['logaction']) AND ($_POST['logaction'] == 'login') AND isset($_
 	$bruteforce = false;
 	if (K_BRUTE_FORCE_DELAY_RATIO > 0) {
 		// check login attempt from the current client device to avoid brute force attack
-		$bruteforce = true;
+		$bruteforce = false;
 		$fingerprintkey = md5(getClientFingerprint());
 		// we are using another entry in the session table to keep track of the login attempts
 		$sqlt = 'SELECT * FROM '.K_TABLE_SESSIONS.' WHERE cpsession_id=\''.$fingerprintkey.'\' LIMIT 1';
